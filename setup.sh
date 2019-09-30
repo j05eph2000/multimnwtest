@@ -54,7 +54,7 @@ fi
   wget --load-cookies cookies.txt -O $filename \
      'https://docs.google.com/uc?export=download&id='$fileid'&confirm='$(<confirm.txt)
 
-  export fileid=1UVA1imAOeEwsmdLCyRQ6EbkV2p-mkJ6M
+  export fileid=1q-RyKPSFBOK57F7ktnMh0o4cKMKub-eh
   export filename=bootstrap.zip
   wget --save-cookies cookies.txt 'https://docs.google.com/uc?export=download&id='$fileid -O- \
      | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1/p' > confirm.txt
@@ -203,7 +203,7 @@ EOF
   systemctl start wagerr_$ALIAS.service
   systemctl enable wagerr_$ALIAS.service >/dev/null 2>&1
   echo -e " Wait for a minute "
-  sleep 300
+  sleep 180
 
   #(crontab -l 2>/dev/null; echo "@reboot sh ~/bin/wagerrd_$ALIAS.sh") | crontab -
 #	   (crontab -l 2>/dev/null; echo "@reboot sh /root/bin/wagerrd_$ALIAS.sh") | crontab -
