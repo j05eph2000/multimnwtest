@@ -78,6 +78,8 @@ fi
   mkdir -p ~/bin
   echo 'export PATH=~/bin:$PATH' > ~/.bash_aliases
   source ~/.bashrc
+  
+  touch masternode.conf
 
 
  ## Setup conf
@@ -168,6 +170,9 @@ clear
   echo "masternodeaddr=$IP:55002" >> wagerr.conf_TEMP
   echo "masternodeprivkey=$PRIVKEY" >> wagerr.conf_TEMP
   sudo ufw allow $PORT/tcp
+  
+  echo "$ALIAS $IP:55002 TXID INDEX" >> masternode.conf
+  echo "" >> masternode.conf
 
   mv wagerr.conf_TEMP $CONF_DIR/wagerr.conf
   
@@ -198,9 +203,13 @@ EOF
   sleep 10
   systemctl start wagerr_$ALIAS.service
   systemctl enable wagerr_$ALIAS.service >/dev/null 2>&1
+  echo -e " Wait for a minute "
+  sleep 300
 
   #(crontab -l 2>/dev/null; echo "@reboot sh ~/bin/wagerrd_$ALIAS.sh") | crontab -
 #	   (crontab -l 2>/dev/null; echo "@reboot sh /root/bin/wagerrd_$ALIAS.sh") | crontab -
 #	   sudo service cron reload
   
 done
+
+rm -rf bootstrap.zip
