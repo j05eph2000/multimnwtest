@@ -93,18 +93,21 @@ read MNCOUNT
 
 
 for i in `seq 1 1 $MNCOUNT`; do
-  echo ""
-  echo "Enter alias for new node"
-  read ALIAS  
+  #echo ""
+  #echo "Enter alias for new node"
+  #read ALIAS  
 
-  echo ""
-  echo "Enter port for node $ALIAS"
-  read PORT
+  #echo ""
+  #echo "Enter port for node $ALIAS"
+  #read PORT
 
-  echo ""
-  echo "Enter masternode private key for node $ALIAS"
-  read PRIVKEY
-
+  #echo ""
+  #echo "Enter masternode private key for node $ALIAS"
+  #read PRIVKEY
+  
+  ALIAS=$'mn'$i
+  PORT=$[55000+i]
+  
   RPCPORT=$(($PORT*10))
   echo "The RPC port is $RPCPORT"
 
