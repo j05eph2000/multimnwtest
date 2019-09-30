@@ -14,6 +14,8 @@ echo "!                                                 !"
 echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 echo && echo && echo
 
+
+
 echo "Do you want to install all needed dependencies (no if you did it before)? [y/n]"
 read DOSETUP
 
@@ -123,24 +125,50 @@ for i in `seq 1 1 $MNCOUNT`; do
   echo "rpcuser=user"`shuf -i 100000-10000000 -n 1` >> wagerr.conf_TEMP
   echo "rpcpassword=pass"`shuf -i 100000-10000000 -n 1` >> wagerr.conf_TEMP
   echo "rpcallowip=127.0.0.1" >> wagerr.conf_TEMP
-  echo "rpcport=$RPCPORT" >> wagerr.conf_TEMP
+  echo "port=$PORT" >> wagerr.conf_TEMP
   echo "listen=1" >> wagerr.conf_TEMP
   echo "server=1" >> wagerr.conf_TEMP
   echo "daemon=1" >> wagerr.conf_TEMP
-  echo "logtimestamps=1" >> wagerr.conf_TEMP
+  
+  function create_key() {
+#  echo -e "Enter your ${RED}$COIN_NAME Masternode Private Key${NC}. Leave it blank to generate a new ${RED}Masternode Private Key${NC} for you:"
+#  read -e COINKEY
+  if [[ -z "$PRIVKEY" ]]; then
+  sh ~/bin/wagerrd_$ALIAS.sh &
+  sleep 30
+  if [ -z "$(ps axo cmd:100 | grep wagerrd)" ]; then
+   echo -e "COIN_NAME server couldn not start. Check /var/log/syslog for errors."
+   exit 1
+  fi
+  PRIVKEY=$(wagerr-cli -conf=$CONF_DIR/wagerr.conf -datadir=$CONF_DIR createmasternodekey)
+  if [ "$?" -gt "0" ];
+    then
+    echo -e "Wallet not fully loaded. Let us wait and try again to generate the Private Key"
+    sleep 30
+    PRIVKEY=$(wagerr-cli -conf=$CONF_DIR/wagerr.conf -datadir=$CONF_DIR createmasternodekey)
+  fi
+  wagerr-cli -conf=$CONF_DIR/wagerr.conf -datadir=$CONF_DIR stop
+fi
+clear
+}
+  rm -rf ~/.wagerr_$ALIAS/wagerr.conf
+  create_key
+  
   echo "maxconnections=256" >> wagerr.conf_TEMP
   echo "masternode=1" >> wagerr.conf_TEMP
   echo "" >> wagerr.conf_TEMP
 
   echo "" >> wagerr.conf_TEMP
-  echo "port=$PORT" >> wagerr.conf_TEMP
+  
+  echo "rpcport=$RPCPORT" >> wagerr.conf_TEMP
+  echo "logtimestamps=1" >> wagerr.conf_TEMP
   echo "masternodeaddr=$IP:55002" >> wagerr.conf_TEMP
   echo "masternodeprivkey=$PRIVKEY" >> wagerr.conf_TEMP
   sudo ufw allow $PORT/tcp
 
   mv wagerr.conf_TEMP $CONF_DIR/wagerr.conf
   
-  sh ~/bin/wagerrd_$ALIAS.sh
+  #sh ~/bin/wagerrd_$ALIAS.sh
   
   cat << EOF > /etc/systemd/system/wagerr_$ALIAS.service
 [Unit]
