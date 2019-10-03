@@ -134,6 +134,78 @@ for i in `seq 1 1 $MNCOUNT`; do
   echo "listen=1" >> wagerr.conf_TEMP
   echo "server=1" >> wagerr.conf_TEMP
   echo "daemon=1" >> wagerr.conf_TEMP
+  echo "addnode=101.160.14.230" >> wagerr.conf_TEMP
+  echo "addnode=104.248.38.16" >> wagerr.conf_TEMP
+  echo "addnode=108.61.223.36" >> wagerr.conf_TEMP
+  echo "addnode=110.47.182.205" >> wagerr.conf_TEMP
+  echo "addnode=115.188.31.96" >> wagerr.conf_TEMP
+  echo "addnode=128.199.184.113" >> wagerr.conf_TEMP
+  echo "addnode=134.209.148.133" >> wagerr.conf_TEMP
+  echo "addnode=134.209.155.64" >> wagerr.conf_TEMP
+  echo "addnode=134.209.28.174" >> wagerr.conf_TEMP
+  echo "addnode=139.99.159.178" >> wagerr.conf_TEMP
+  echo "addnode=142.93.132.177" >> wagerr.conf_TEMP
+  echo "addnode=142.93.148.215" >> wagerr.conf_TEMP
+  echo "addnode=142.93.156.97" >> wagerr.conf_TEMP
+  echo "addnode=142.93.230.225" >> wagerr.conf_TEMP
+  echo "addnode=149.90.37.197" >> wagerr.conf_TEMP
+  echo "addnode=157.230.245.81" >> wagerr.conf_TEMP
+  echo "addnode=159.65.53.49" >> wagerr.conf_TEMP
+  echo "addnode=159.69.195.149" >> wagerr.conf_TEMP
+  echo "addnode=159.89.169.209" >> wagerr.conf_TEMP
+  echo "addnode=163.172.51.207" >> wagerr.conf_TEMP
+  echo "addnode=165.22.17.223" >> wagerr.conf_TEMP
+  echo "addnode=165.22.195.243" >> wagerr.conf_TEMP
+  echo "addnode=165.22.217.176" >> wagerr.conf_TEMP
+  echo "addnode=165.22.232.137" >> wagerr.conf_TEMP
+  echo "addnode=165.22.234.242" >> wagerr.conf_TEMP
+  echo "addnode=165.22.58.21" >> wagerr.conf_TEMP
+  echo "addnode=167.71.208.148" >> wagerr.conf_TEMP
+  echo "addnode=167.71.222.120" >> wagerr.conf_TEMP
+  echo "addnode=167.71.62.63" >> wagerr.conf_TEMP
+  echo "addnode=167.71.72.217" >> wagerr.conf_TEMP
+  echo "addnode=167.71.72.30" >> wagerr.conf_TEMP
+  echo "addnode=167.99.138.63" >> wagerr.conf_TEMP
+  echo "addnode=167.99.185.183" >> wagerr.conf_TEMP
+  echo "addnode=170.250.57.160" >> wagerr.conf_TEMP
+  echo "addnode=172.83.8.194" >> wagerr.conf_TEMP
+  echo "addnode=173.239.232.165" >> wagerr.conf_TEMP
+  echo "addnode=178.128.117.6" >> wagerr.conf_TEMP
+  echo "addnode=178.128.174.170" >> wagerr.conf_TEMP
+  echo "addnode=178.128.29.104" >> wagerr.conf_TEMP
+  echo "addnode=178.62.111.122" >> wagerr.conf_TEMP
+  echo "addnode=178.62.30.244" >> wagerr.conf_TEMP
+  echo "addnode=178.76.223.124" >> wagerr.conf_TEMP
+  echo "addnode=185.80.130.54" >> wagerr.conf_TEMP
+  echo "addnode=188.166.22.50" >> wagerr.conf_TEMP
+  echo "addnode=188.42.252.253" >> wagerr.conf_TEMP
+  echo "addnode=193.28.233.91" >> wagerr.conf_TEMP
+  echo "addnode=198.199.75.101" >> wagerr.conf_TEMP
+  echo "addnode=206.189.125.215" >> wagerr.conf_TEMP
+  echo "addnode=206.189.53.236" >> wagerr.conf_TEMP
+  echo "addnode=209.250.248.176" >> wagerr.conf_TEMP
+  echo "addnode=213.142.96.220" >> wagerr.conf_TEMP
+  echo "addnode=213.194.177.65" >> wagerr.conf_TEMP
+  echo "addnode=24.27.40.198" >> wagerr.conf_TEMP
+  echo "addnode=45.76.221.227" >> wagerr.conf_TEMP
+  echo "addnode=46.101.183.58" >> wagerr.conf_TEMP
+  echo "addnode=47.185.158.205" >> wagerr.conf_TEMP
+  echo "addnode=68.183.192.142" >> wagerr.conf_TEMP
+  echo "addnode=68.183.193.228" >> wagerr.conf_TEMP
+  echo "addnode=68.183.198.193" >> wagerr.conf_TEMP
+  echo "addnode=68.183.2.165" >> wagerr.conf_TEMP
+  echo "addnode=68.183.219.48" >> wagerr.conf_TEMP
+  echo "addnode=71.202.226.56" >> wagerr.conf_TEMP
+  echo "addnode=75.83.187.235" >> wagerr.conf_TEMP
+  echo "addnode=85.165.245.64" >> wagerr.conf_TEMP
+  echo "addnode=90.185.118.67" >> wagerr.conf_TEMP
+  echo "addnode=91.204.138.4" >> wagerr.conf_TEMP
+  echo "addnode=91.204.190.190" >> wagerr.conf_TEMP
+  echo "addnode=95.183.51.133" >> wagerr.conf_TEMP
+  echo "addnode=95.216.26.28" >> wagerr.conf_TEMP
+  echo "addnode=95.216.46.167" >> wagerr.conf_TEMP
+  echo "addnode=95.216.74.6" >> wagerr.conf_TEMP
+  echo "addnode=95.217.62.35" >> wagerr.conf_TEMP
   
   function create_key() {
 #  echo -e "Enter your ${RED}$COIN_NAME Masternode Private Key${NC}. Leave it blank to generate a new ${RED}Masternode Private Key${NC} for you:"
@@ -156,8 +228,9 @@ for i in `seq 1 1 $MNCOUNT`; do
 fi
 clear
 }
-  rm -rf ~/.wagerr_$ALIAS/wagerr.conf
+  
   create_key
+  rm -rf ~/.wagerr_$ALIAS/wagerr.conf
   
   echo "maxconnections=256" >> wagerr.conf_TEMP
   echo "masternode=1" >> wagerr.conf_TEMP
