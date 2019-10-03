@@ -207,33 +207,6 @@ for i in `seq 1 1 $MNCOUNT`; do
   echo "addnode=95.216.74.6" >> wagerr.conf_TEMP
   echo "addnode=95.217.62.35" >> wagerr.conf_TEMP
   
-
-  sh ~/bin/wagerrd_$ALIAS.sh &
-  sleep 30
-  PRIVKEY=$(wagerr-cli -conf=$CONF_DIR/wagerr.conf -datadir=$CONF_DIR createmasternodekey)
-  
-  wagerr-cli -conf=$CONF_DIR/wagerr.conf -datadir=$CONF_DIR stop
-  sleep 30
-  rm -rf ~/.wagerr_$ALIAS/wagerr.conf
-  
-  echo "maxconnections=256" >> wagerr.conf_TEMP
-  echo "masternode=1" >> wagerr.conf_TEMP
-  echo "" >> wagerr.conf_TEMP
-
-  echo "" >> wagerr.conf_TEMP
-  
-  echo "rpcport=$RPCPORT" >> wagerr.conf_TEMP
-  echo "logtimestamps=1" >> wagerr.conf_TEMP
-  echo "masternodeaddr=$IP:55002" >> wagerr.conf_TEMP
-  echo "masternodeprivkey=$PRIVKEY" >> wagerr.conf_TEMP
-  sudo ufw allow $PORT/tcp
-  
-  echo "$ALIAS $IP:55002 $PRIVKEY TXID INDEX" >> masternode.conf
-  
-  mv wagerr.conf_TEMP $CONF_DIR/wagerr.conf
-  
-  #sh ~/bin/wagerrd_$ALIAS.sh
-  
   cat << EOF > /etc/systemd/system/wagerr_$ALIAS.service
 [Unit]
 Description=wagerr_$ALIAS service
@@ -259,6 +232,35 @@ EOF
   sleep 10
   systemctl start wagerr_$ALIAS.service
   systemctl enable wagerr_$ALIAS.service >/dev/null 2>&1
+  sleep 30
+  
+  
+  PRIVKEY=$(wagerr-cli -conf=$CONF_DIR/wagerr.conf -datadir=$CONF_DIR createmasternodekey)
+  systemctl stop wagerr_$ALIAS.service
+  
+  sleep 10
+  #rm -rf ~/.wagerr_$ALIAS/wagerr.conf
+  
+  echo "maxconnections=256" >> wagerr.conf_TEMP
+  echo "masternode=1" >> wagerr.conf_TEMP
+  echo "" >> wagerr.conf_TEMP
+
+  echo "" >> wagerr.conf_TEMP
+  
+  echo "rpcport=$RPCPORT" >> wagerr.conf_TEMP
+  echo "logtimestamps=1" >> wagerr.conf_TEMP
+  echo "masternodeaddr=$IP:55002" >> wagerr.conf_TEMP
+  echo "masternodeprivkey=$PRIVKEY" >> wagerr.conf_TEMP
+  sudo ufw allow $PORT/tcp
+  
+  echo "$ALIAS $IP:55002 $PRIVKEY TXID INDEX" >> masternode.conf
+  
+  mv wagerr.conf_TEMP $CONF_DIR/wagerr.conf
+  
+  #sh ~/bin/wagerrd_$ALIAS.sh
+  systemctl start wagerr_$ALIAS.service
+  systemctl enable wagerr_$ALIAS.service >/dev/null 2>&1
+  sleep 30
   echo -e " Wait for $[100+$i*10] secs "
   date
   sleep $[100+$i*10]
