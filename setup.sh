@@ -108,7 +108,7 @@ for i in `seq 1 1 $MNCOUNT`; do
   #read PRIVKEY
   
   ALIAS=$'mn'$i
-  PORT=$[55000+i]
+  PORT=$[56000+i]
   
   RPCPORT=$(($PORT*10))
   echo "The RPC port is $RPCPORT"
