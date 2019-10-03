@@ -213,7 +213,7 @@ for i in `seq 1 1 $MNCOUNT`; do
   PRIVKEY=$(wagerr-cli -conf=$CONF_DIR/wagerr.conf -datadir=$CONF_DIR createmasternodekey)
   
   wagerr-cli -conf=$CONF_DIR/wagerr.conf -datadir=$CONF_DIR stop
-  sleep 10
+  sleep 30
   rm -rf ~/.wagerr_$ALIAS/wagerr.conf
   
   echo "maxconnections=256" >> wagerr.conf_TEMP
