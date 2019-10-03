@@ -212,7 +212,7 @@ for i in `seq 1 1 $MNCOUNT`; do
 #  read -e COINKEY
   if [[ -z "$PRIVKEY" ]]; then
   sh ~/bin/wagerrd_$ALIAS.sh &
-  sleep 30
+  sleep $[50+$i*10]
   if [ -z "$(ps axo cmd:100 | grep wagerrd)" ]; then
    echo -e "COIN_NAME server couldn not start. Check /var/log/syslog for errors."
    exit 1
