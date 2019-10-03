@@ -207,29 +207,13 @@ for i in `seq 1 1 $MNCOUNT`; do
   echo "addnode=95.216.74.6" >> wagerr.conf_TEMP
   echo "addnode=95.217.62.35" >> wagerr.conf_TEMP
   
-  function create_key() {
-#  echo -e "Enter your ${RED}$COIN_NAME Masternode Private Key${NC}. Leave it blank to generate a new ${RED}Masternode Private Key${NC} for you:"
-#  read -e COINKEY
-  if [[ -z "$PRIVKEY" ]]; then
+
   sh ~/bin/wagerrd_$ALIAS.sh &
-  sleep $[50+$i*10]
-  if [ -z "$(ps axo cmd:100 | grep wagerrd)" ]; then
-   echo -e "COIN_NAME server couldn not start. Check /var/log/syslog for errors."
-   exit 1
-  fi
+  sleep $[20+$i*10]
   PRIVKEY=$(wagerr-cli -conf=$CONF_DIR/wagerr.conf -datadir=$CONF_DIR createmasternodekey)
-  if [ "$?" -gt "0" ];
-    then
-    echo -e "Wallet not fully loaded. Let us wait and try again to generate the Private Key"
-    sleep 30
-    PRIVKEY=$(wagerr-cli -conf=$CONF_DIR/wagerr.conf -datadir=$CONF_DIR createmasternodekey)
-  fi
-  wagerr-cli -conf=$CONF_DIR/wagerr.conf -datadir=$CONF_DIR stop
-fi
-clear
-}
   
-  create_key
+  wagerr-cli -conf=$CONF_DIR/wagerr.conf -datadir=$CONF_DIR stop
+  sleep 10
   rm -rf ~/.wagerr_$ALIAS/wagerr.conf
   
   echo "maxconnections=256" >> wagerr.conf_TEMP
