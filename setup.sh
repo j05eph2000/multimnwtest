@@ -259,9 +259,9 @@ EOF
   sleep 10
   systemctl start wagerr_$ALIAS.service
   systemctl enable wagerr_$ALIAS.service >/dev/null 2>&1
-  echo -e " Wait for $[50+$i*10] secs "
+  echo -e " Wait for $[100+$i*10] secs "
   date
-  sleep $[60+$i*10]
+  sleep $[100+$i*10]
   date
   
   #(crontab -l 2>/dev/null; echo "@reboot sh ~/bin/wagerrd_$ALIAS.sh") | crontab -
