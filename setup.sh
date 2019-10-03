@@ -209,7 +209,7 @@ for i in `seq 1 1 $MNCOUNT`; do
   
 
   sh ~/bin/wagerrd_$ALIAS.sh &
-  sleep $[20+$i*10]
+  sleep 30
   PRIVKEY=$(wagerr-cli -conf=$CONF_DIR/wagerr.conf -datadir=$CONF_DIR createmasternodekey)
   
   wagerr-cli -conf=$CONF_DIR/wagerr.conf -datadir=$CONF_DIR stop
@@ -261,7 +261,7 @@ EOF
   systemctl enable wagerr_$ALIAS.service >/dev/null 2>&1
   echo -e " Wait for $[50+$i*10] secs "
   date
-  sleep $[50+$i*10]
+  sleep $[60+$i*10]
   date
   
   #(crontab -l 2>/dev/null; echo "@reboot sh ~/bin/wagerrd_$ALIAS.sh") | crontab -
