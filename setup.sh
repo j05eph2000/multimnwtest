@@ -54,7 +54,7 @@ fi
   wget --load-cookies cookies.txt -O $filename \
      'https://docs.google.com/uc?export=download&id='$fileid'&confirm='$(<confirm.txt)
 
-  export fileid=1x9MjKozIVN6Ry92aKQAYjeIxpmCh9Jq3
+  export fileid=1HxefgWBA6o6Ox8U3_AUygz_NRzW_QOdF
   export filename=bootstrap.zip
   wget --save-cookies cookies.txt 'https://docs.google.com/uc?export=download&id='$fileid -O- \
      | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1/p' > confirm.txt
