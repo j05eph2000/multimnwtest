@@ -46,8 +46,8 @@ fi
   #wget https://github.com/wagerr/wagerr/releases/download/v3.0.1/wagerr-3.0.1-x86_64-linux-gnu.tar.gz
   
   #wget https://github.com/wagerr/Wagerr-Blockchain-Snapshots/releases/download/Block-826819/826819.zip -O bootstrap.zip
-  export fileid=17u7ba0HSMJ40m1PIV3Fm63J_bdEHEWbS
-  export filename=wagerr-3.0.1-x86_64-linux-gnu.tar.gz
+  export fileid=1VqdvSvolhpwOoYgaoSHkZkmRla2kl27R
+  export filename=wagerr-3.1.0-x86_64-linux-gnu.tar.gz
   wget --save-cookies cookies.txt 'https://docs.google.com/uc?export=download&id='$fileid -O- \
      | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1/p' > confirm.txt
 
@@ -61,12 +61,12 @@ fi
 
   wget --load-cookies cookies.txt -O $filename \
      'https://docs.google.com/uc?export=download&id='$fileid'&confirm='$(<confirm.txt)
-  tar xvzf wagerr-3.0.1-x86_64-linux-gnu.tar.gz
+  tar xvzf wagerr-3.1.0-x86_64-linux-gnu.tar.gz
   
   
-  chmod +x wagerr-3.0.1/bin/*
-  sudo mv  wagerr-3.0.1/bin/* /usr/local/bin
-  rm -rf wagerr-3.0.1-x86_64-linux-gnu.tar.gz
+  chmod +x wagerr-3.1.0/bin/*
+  sudo mv  wagerr-3.1.0/bin/* /usr/local/bin
+  rm -rf wagerr-3.1.0-x86_64-linux-gnu.tar.gz
 
   sudo apt install -y ufw
   sudo ufw allow ssh/tcp
