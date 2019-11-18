@@ -263,7 +263,7 @@ EOF
   sudo ufw allow $PORT/tcp
   
   echo "$ALIAS $IP:55002 $PRIVKEY TXID INDEX" >> masternode.conf
-  echo "" >> masternode.conf
+  
   mv wagerr.conf_TEMP $CONF_DIR/wagerr.conf
   
   #sh ~/bin/wagerrd_$ALIAS.sh
