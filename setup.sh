@@ -262,7 +262,7 @@ EOF
   echo "masternodeprivkey=$PRIVKEY" >> wagerr.conf_TEMP
   sudo ufw allow $PORT/tcp
   
-  echo "$ALIAS $IP:55002 $PRIVKEY TXID INDEX" >> masternode.conf
+  echo "$ALIAS $IP:55002 $PRIVKEY " >> masternode.conf
   
   mv wagerr.conf_TEMP $CONF_DIR/wagerr.conf
   
