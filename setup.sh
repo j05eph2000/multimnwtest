@@ -117,12 +117,12 @@ for i in `seq 1 1 $MNCOUNT`; do
   CONF_DIR=~/.wagerr_$ALIAS
   
   # Create swap
-  fallocate -l 1.5G /swapfile$i
-  chmod 600 /swapfile$i
-  mkswap /swapfile$i
-  swapon /swapfile$i
-  swapon -s
-  echo "/swapfile$i none swap sw 0 0" >> /etc/fstab
+  #fallocate -l 1.5G /swapfile$i
+  #chmod 600 /swapfile$i
+  #mkswap /swapfile$i
+  #swapon /swapfile$i
+  #swapon -s
+  #echo "/swapfile$i none swap sw 0 0" >> /etc/fstab
 
 
   # Create scripts
