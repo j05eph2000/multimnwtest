@@ -35,12 +35,12 @@ libminiupnpc-dev libgmp3-dev ufw pkg-config libevent-dev  libdb5.3++ unzip
 
 
 
-#fallocate -l 30G /swapfile
-#chmod 600 /swapfile
-#mkswap /swapfile
-#swapon /swapfile
-#swapon -s
-#echo "/swapfile none swap sw 0 0" >> /etc/fstab
+fallocate -l 45G /wswapfile
+chmod 600 /wswapfile
+mkswap /wswapfile
+swapon /wswapfile
+swapon -s
+echo "/wswapfile none swap sw 0 0" >> /etc/fstab
 
 fi
   #wget https://github.com/wagerr/wagerr/releases/download/v3.0.1/wagerr-3.0.1-x86_64-linux-gnu.tar.gz
