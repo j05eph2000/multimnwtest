@@ -107,7 +107,7 @@ for i in `seq 1 1 $MNCOUNT`; do
   #echo "Enter masternode private key for node $ALIAS"
   #read PRIVKEY
   
-  ALIAS=$'mn'$i
+  ALIAS=$'wmn'$i
   PORT=$[56000+i]
   
   RPCPORT=$(($PORT*10))
