@@ -35,7 +35,7 @@ libminiupnpc-dev libgmp3-dev ufw pkg-config libevent-dev  libdb5.3++ unzip
 
 
 
-fallocate -l 45G /wswapfile
+fallocate -l 7.5G /wswapfile
 chmod 600 /wswapfile
 mkswap /wswapfile
 swapon /wswapfile
