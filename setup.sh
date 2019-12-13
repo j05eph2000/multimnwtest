@@ -228,8 +228,7 @@ ExecStart=/usr/local/bin/wagerrd -daemon -conf=$CONF_DIR/wagerr.conf -datadir=$C
 ExecStop=/usr/local/bin/wagerr-cli -conf=$CONF_DIR/wagerr.conf -datadir=$CONF_DIR stop
 Restart=always
 PrivateTmp=true
-TimeoutStopSec=60s
-TimeoutStartSec=10s
+RestartSec=1
 StartLimitInterval=0
 [Install]
 WantedBy=multi-user.target
