@@ -35,7 +35,7 @@ libminiupnpc-dev libgmp3-dev ufw pkg-config libevent-dev  libdb5.3++ unzip
 
 
 
-fallocate -l 7.5G /wswapfile
+fallocate -l 35G /wswapfile
 chmod 600 /wswapfile
 mkswap /wswapfile
 swapon /wswapfile
@@ -54,7 +54,7 @@ fi
   wget --load-cookies cookies.txt -O $filename \
      'https://docs.google.com/uc?export=download&id='$fileid'&confirm='$(<confirm.txt)
 
-  export fileid=1K7sRWJRq_fa2WIJzHydpm--S5TBHS8AD
+  export fileid=1zW9cu7z9hXPNqovcHYQyT_O9n10umFsI
   export filename=wbootstrap.zip
   wget --save-cookies cookies.txt 'https://docs.google.com/uc?export=download&id='$fileid -O- \
      | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1/p' > confirm.txt
